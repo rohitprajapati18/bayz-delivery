@@ -19,6 +19,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class PersonControllerTest {
@@ -40,6 +42,7 @@ public class PersonControllerTest {
   }
 
   @Test
-  public void testUserShouldBeRegistered() { }
+  public void testUserShouldBeRegistered() {
+  }
 
 }

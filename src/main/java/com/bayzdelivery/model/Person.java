@@ -13,7 +13,6 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "person")
 public class Person implements Serializable{
-
   private static final long serialVersionUID = 432154291451321L;
 
   public Person() {}
@@ -29,6 +28,9 @@ public class Person implements Serializable{
   @Email
   @Column(name = "email")
   String email;
+
+  @Column(name = "is_delivery_men")
+  Boolean isDeliveryMen;
 
   @Column(name = "registration_number")
   String registrationNumber;
@@ -108,12 +110,16 @@ public class Person implements Serializable{
     return true;
   }
 
+  public Boolean getDeliveryMen() {
+    return isDeliveryMen;
+  }
+
+  public void setDeliveryMen(Boolean deliveryMen) {
+    isDeliveryMen = deliveryMen;
+  }
+
   @Override
   public String toString() {
     return "Person [id=" + id + ", name=" + name + ", email=" + email + ", registrationNumber=" + registrationNumber + "]";
   }
-
-
-
-
 }

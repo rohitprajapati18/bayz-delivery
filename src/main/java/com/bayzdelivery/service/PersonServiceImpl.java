@@ -1,5 +1,6 @@
 package com.bayzdelivery.service;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PersonServiceImpl implements PersonService{
-
   @Autowired
   PersonRepository personRepository;
 
@@ -31,7 +31,4 @@ public class PersonServiceImpl implements PersonService{
     Optional<Person> dbPerson = personRepository.findById(personId);
     return dbPerson.orElse(null);
   }
-
-
-
 }

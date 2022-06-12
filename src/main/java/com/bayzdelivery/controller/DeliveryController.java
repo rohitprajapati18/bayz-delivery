@@ -1,14 +1,15 @@
 package com.bayzdelivery.controller;
 
+import com.bayzdelivery.dto.DeliveryDTO;
 import com.bayzdelivery.model.Delivery;
+import com.bayzdelivery.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.bayzdelivery.service.DeliveryService;
+
+import java.time.Instant;
+import java.util.List;
 
 @RestController
 public class DeliveryController {
@@ -23,9 +24,19 @@ public class DeliveryController {
 
   @GetMapping(path = "/api/delivery/{delivery-id}")
   public ResponseEntity<Delivery> getDeliveryById(@PathVariable(name="delivery-id",required=true)Long deliveryId){
+
     Delivery delivery = deliveryService.findById(deliveryId);
     if (delivery !=null)
       return ResponseEntity.ok(delivery);
     return ResponseEntity.notFound().build();
+  }
+
+  @GetMapping(path="/api/delivery/top-delivery-men/")
+  public ResponseEntity<List<DeliveryDTO>> getTop3Person(@RequestParam(name="start-time") String startTime, @RequestParam(name="end-time") String endTime) {
+    Instant start = Instant.parse(startTime);
+    Instant end = Instant.parse(endTime);
+
+    List<DeliveryDTO> person = deliveryService.getTopDeliveryMen(start, end);
+    return ResponseEntity.ok(person);
   }
 }
