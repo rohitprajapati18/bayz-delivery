@@ -25,8 +25,8 @@ public interface DeliveryRepository extends CrudRepository<Delivery, Long> {
     Long averageComission(Instant startTime, Instant endTime, Long id);
 
     @Query(value = "SELECT * FROM delivery WHERE "
-            + "TIMESTAMPDIFF(MINUTE,start_time,:instantTime) > 45 AND end_time IS NULL", nativeQuery = true)
-    List<Delivery> getDelayedDeliveries(Instant instantTime);
+            + "TIMESTAMPDIFF(MINUTE,start_time,end_time) > 45 AND end_time IS NULL", nativeQuery = true)
+    List<Delivery> getDelayedDeliveries();
 
     @Query("FROM Delivery d WHERE ((d.startTime >= :start AND d.endTime <= :start) OR (d.startTime >= :end AND d.endTime <= :end)) AND d.deliveryMan.id = :deliveryMenId")
     List<Delivery> getOtherDelivery(Instant start, Instant end, Long deliveryMenId);

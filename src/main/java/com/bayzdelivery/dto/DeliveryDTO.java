@@ -5,8 +5,6 @@ import com.bayzdelivery.model.Person;
 public class DeliveryDTO {
     Person person;
 
-    //Long maximumOrderPrice;
-
     Long averageComission;
 
     public DeliveryDTO() {

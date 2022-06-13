@@ -31,7 +31,7 @@ public class DeliveryController {
     return ResponseEntity.notFound().build();
   }
 
-  @GetMapping(path="/api/delivery/top-delivery-men/")
+  @GetMapping(path="/api/delivery/top-delivery-men")
   public ResponseEntity<List<DeliveryDTO>> getTop3Person(@RequestParam(name="start-time") String startTime, @RequestParam(name="end-time") String endTime) {
     Instant start = Instant.parse(startTime);
     Instant end = Instant.parse(endTime);
