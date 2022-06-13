@@ -25,7 +25,7 @@ public class DelayedDeliveryNotifier {
      *
      *  Finds all the deliveries that are over 45 mins and not delivered
      */
-    @Scheduled(fixedDelay = 1000*45*60)
+    @Scheduled(fixedDelay = 1000*60)
     public void checkDelayedDeliveries() {
         List<Delivery> delayedDeliveries = deliveryRepository.getDelayedDeliveries();
 
