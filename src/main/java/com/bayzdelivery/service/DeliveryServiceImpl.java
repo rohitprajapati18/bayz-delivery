@@ -64,5 +64,3 @@ public class DeliveryServiceImpl implements DeliveryService {
     return result;
   }
 }
-
-Hello world
